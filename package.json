@@ -5,7 +5,13 @@
   "main": "src/main.js",
   "scripts": {
     "start": "node src/main.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "agent:process": "node scripts/agents/processEmails.js",
+    "agent:cleanup": "node scripts/agents/cleanup.js",
+    "agent:report": "node scripts/agents/generateReport.js",
+    "agent:monitor": "node scripts/agents/monitor.js",
+    "agent:all": "npm run agent:cleanup && npm run agent:process && npm run agent:report",
+    "agent:health": "npm run agent:monitor"
   },
   "keywords": [
     "gmail",

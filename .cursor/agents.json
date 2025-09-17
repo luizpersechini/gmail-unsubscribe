@@ -1,0 +1,58 @@
+{
+  "version": "1.0",
+  "agents": [
+    {
+      "name": "Email Processor",
+      "description": "Automatically processes promotional emails and unsubscribes",
+      "schedule": "0 9,17 * * *",
+      "command": "npm run agent:process",
+      "enabled": true,
+      "notifications": {
+        "onSuccess": true,
+        "onFailure": true
+      },
+      "env": {
+        "AUTO_CONTINUE": "true",
+        "DELETE_AFTER_UNSUBSCRIBE": "true",
+        "MAX_EMAILS_TO_PROCESS": "20"
+      }
+    },
+    {
+      "name": "Cleanup Agent",
+      "description": "Removes old screenshots and logs",
+      "schedule": "0 2 * * *",
+      "command": "npm run agent:cleanup",
+      "enabled": true,
+      "notifications": {
+        "onSuccess": false,
+        "onFailure": true
+      }
+    },
+    {
+      "name": "Report Generator",
+      "description": "Generates daily unsubscribe reports",
+      "schedule": "0 22 * * *",
+      "command": "npm run agent:report",
+      "enabled": true,
+      "notifications": {
+        "onSuccess": true,
+        "onFailure": true
+      }
+    },
+    {
+      "name": "Quick Process",
+      "description": "Process emails on demand",
+      "trigger": "manual",
+      "command": "npm run agent:process",
+      "env": {
+        "AUTO_CONTINUE": "true",
+        "MAX_EMAILS_TO_PROCESS": "5"
+      }
+    }
+  ],
+  "settings": {
+    "logRetention": 30,
+    "errorNotifications": true,
+    "timezone": "America/New_York"
+  }
+}

@@ -1,0 +1,59 @@
+# Cursor Background Agent Configuration for Gmail Unsubscribe Tool
+
+## Project Overview
+This is an AI-powered Gmail unsubscribe tool that uses DeepSeek API to automatically unsubscribe from promotional emails.
+
+## Agent Tasks
+
+### 1. Email Processing Agent
+- Monitor Gmail for new promotional emails
+- Process unsubscribe requests automatically
+- Generate daily reports of unsubscribed emails
+- Clean up old screenshots (older than 7 days)
+
+### 2. Maintenance Agent
+- Check for dependency updates weekly
+- Monitor API rate limits
+- Validate authentication tokens
+- Clean up log files
+
+## Project Structure
+```
+/src
+  /ai - DeepSeek AI integration
+  /auth - Gmail authentication
+  /automation - Puppeteer browser automation
+  /email - Email fetching and management
+  /unsubscribe - Unsubscribe logic
+```
+
+## Key Commands
+- `npm start` - Run the unsubscribe tool
+- `npm run agent:process` - Process emails in background
+- `npm run agent:cleanup` - Clean up old files
+- `npm run agent:report` - Generate unsubscribe report
+
+## Environment Variables Required
+- `DEEPSEEK_API_KEY` - DeepSeek API key for AI processing
+- `CLIENT_ID`, `CLIENT_SECRET` - Gmail API credentials
+- `AUTO_CONTINUE=true` - For background processing
+- `DELETE_AFTER_UNSUBSCRIBE=true` - Auto-delete emails
+
+## Agent Guidelines
+1. Never commit sensitive data (.env, token.json)
+2. Always validate email content before processing
+3. Take screenshots for audit trail
+4. Handle rate limits gracefully
+5. Log all operations for debugging
+
+## Error Handling
+- Retry failed unsubscribes up to 3 times
+- Log errors to `logs/error.log`
+- Send notifications for critical failures
+- Gracefully handle API rate limits
+
+## Safety Rules
+- Never delete emails without successful unsubscribe confirmation
+- Always maintain audit trail with screenshots
+- Respect rate limits for both Gmail and DeepSeek APIs
+- Process maximum 50 emails per session by default

@@ -15,9 +15,7 @@ yarn-error.log*
 config/token.json
 
 # Screenshots
-screenshots/*.png
-screenshots/*.jpg
-screenshots/*.jpeg
+screenshots/
 
 # OS files
 .DS_Store
@@ -33,6 +31,9 @@ Thumbs.db
 # Logs
 logs/
 *.log
+
+# Data artifacts
+data/
 
 # Reports
 reports/
